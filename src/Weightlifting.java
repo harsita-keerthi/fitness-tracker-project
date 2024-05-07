@@ -1,7 +1,7 @@
 public class Weightlifting extends Exercise{
     private int duration;
 
-    public Weightlifting(String activityType, String name, int caloriesBurned, String description){
+    public Weightlifting(String activityType, String name, int caloriesBurned, String description, int duration){
         super(activityType, name, caloriesBurned, description);
         this.duration = duration;
     }
