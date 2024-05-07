@@ -122,7 +122,7 @@ class WeightLiftingGoal implements FitnessGoal {
 	
 	public void giveAdvice() {
 		System.out.println("Advice for completing this weight lifting goal:");
-		System.out.println(" * Check that you are usign proper form");
+		System.out.println(" * Check that you are using proper form");
 		System.out.println(" * Don't hold your breath, breathe out as you lift and in as you lower");
 		System.out.println(" * Add strength training to your fitness routine");
 		System.out.println(" * Don't ignore pain and/or push yourself too hard");
