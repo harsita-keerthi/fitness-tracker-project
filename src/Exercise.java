@@ -45,4 +45,6 @@ abstract class Exercise {
     }
     //abstract methods, extend classes
     public abstract void displayDetails();
+
+    public abstract void displayType();
 }
