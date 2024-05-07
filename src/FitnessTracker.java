@@ -34,54 +34,8 @@ public class FitnessTracker {
 					
 					Workout workout = new Workout(date, time, duration);
 					user.addWorkout(workout);
-					scnr.nextLine();
+					addExercises(workout);
 					
-					System.out.print("Would you like to add an exercise? (y/n): ");
-					String addAnother = scnr.nextLine();
-					int type = 0;
-					while (addAnother.equals("y")) {
-						System.out.println("Choose one of the following exercise types:");
-						System.out.println("1 - weightlifting");
-						System.out.println("2 - stretching");
-						System.out.println("3 - cardio");
-						System.out.println("4 - mind and body");
-						System.out.print("Exercise type: ");
-						type = scnr.nextInt();
-						scnr.nextLine();
-						System.out.println();
-						
-						System.out.print("Exercise name: ");
-						String name = scnr.nextLine();
-						System.out.print("Duration (in minutes): ");
-						int length = scnr.nextInt();
-						scnr.nextLine();
-						System.out.print("Exercise description: ");
-						String description = scnr.nextLine();
-						System.out.print("Calories burned: ");
-						int cals = scnr.nextInt();
-						scnr.nextLine();
-						
-						Exercise e = null;
-						switch(type) {
-							case 1: 
-								e = new Weightlifting("weightlifting", name, cals, description, length);
-								break;
-							case 2:
-								e = new Stretching("stretching", name, cals, description, length);
-								break;
-							case 3:
-								e = new Cardio("cardio", name, cals, description, length);
-								break;
-							case 4:
-								e = new MindBody("mind and body", name, cals, description, length);
-								break;
-						}
-						
-						workout.addExercise(e);
-						System.out.println();
-						System.out.print("Would you like to add an exercise? (y/n): ");
-						addAnother = scnr.nextLine();
-					}
 					System.out.println();
 					break;
 				case 2:
@@ -96,7 +50,50 @@ public class FitnessTracker {
 					
 					break;
 				case 3:
-					System.out.println("Displaying workouts..."); // FIXME: create
+					System.out.println("Type the number of the workout you want to edit."); 
+					System.out.println();
+					
+					List<Workout> editWorkouts = user.getWorkouts();
+					for (int i = 0; i < editWorkouts.size(); ++i) {
+						System.out.println("WORKOUT " + (i+1));
+						editWorkouts.get(i).displaySummary();
+					}
+					System.out.print("Workout number: ");
+					Scanner s = new Scanner(System.in);
+					int workoutNum = s.nextInt();
+					
+					System.out.println();
+					Workout editWorkout = editWorkouts.get(workoutNum - 1);
+					
+					System.out.println("Select the number of what you want to change.");
+					System.out.println("1 - Add exercise");
+					System.out.println("2 - Date");
+					System.out.println("3 - Time");
+					System.out.println("4 - Duration");
+					System.out.print("Number: ");
+					int editChoice = s.nextInt();
+					s.nextLine();
+					switch(editChoice) {
+						case 1:
+							addExercises(editWorkout);
+							break;
+						case 2:
+							System.out.print("New date: ");
+							String newDate = s.nextLine();
+							editWorkout.setDate(newDate);
+							break;
+						case 3:
+							System.out.print("New time: ");
+							String newTime = s.nextLine();
+							editWorkout.setTime(newTime);
+							break;
+						case 4:
+							System.out.print("New duration: ");
+							int newDuration = s.nextInt();
+							editWorkout.setTotalDuration(newDuration);
+							break;
+					}
+					
 					System.out.println();
 					break;
 				case 4:
@@ -210,5 +207,55 @@ public class FitnessTracker {
 		System.out.println("---------------------------------------------------");
 		System.out.println();
 		return key;
+	}
+	
+	public static void addExercises(Workout w) {
+		Scanner s = new Scanner(System.in);
+		System.out.print("Would you like to add an exercise? (y/n): ");
+		String addAnother = s.nextLine();
+		int type = 0;
+		while (addAnother.equals("y")) {
+			System.out.println("Choose one of the following exercise types:");
+			System.out.println("1 - weightlifting");
+			System.out.println("2 - stretching");
+			System.out.println("3 - cardio");
+			System.out.println("4 - mind and body");
+			System.out.print("Exercise type: ");
+			type = s.nextInt();
+			s.nextLine();
+			System.out.println();
+			
+			System.out.print("Exercise name: ");
+			String name = s.nextLine();
+			System.out.print("Duration (in minutes): ");
+			int length = s.nextInt();
+			s.nextLine();
+			System.out.print("Exercise description: ");
+			String description = s.nextLine();
+			System.out.print("Calories burned: ");
+			int cals = s.nextInt();
+			s.nextLine();
+			
+			Exercise e = null;
+			switch(type) {
+				case 1: 
+					e = new Weightlifting("weightlifting", name, cals, description, length);
+					break;
+				case 2:
+					e = new Stretching("stretching", name, cals, description, length);
+					break;
+				case 3:
+					e = new Cardio("cardio", name, cals, description, length);
+					break;
+				case 4:
+					e = new MindBody("mind and body", name, cals, description, length);
+					break;
+			}
+			
+			w.addExercise(e);
+			System.out.println();
+			System.out.print("Would you like to add an exercise? (y/n): ");
+			addAnother = s.nextLine();
+		}
 	}
 }
