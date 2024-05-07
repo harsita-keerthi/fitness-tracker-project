@@ -6,15 +6,54 @@ public class Workout {
     private int caloriesBurned;
     private int totalDuration;
 
-    public Workout (String date, String time){
-        //...initialize attributes
+    public Workout (String date, String time, int totalDuration){
+        this.date = date;
+        this.time = time; 
+        this.totalDuration = totalDuration;
+        caloriesBurned = 0; 
     }
 
-    public void addExercise(Exercise exercise){ // make boolean? false if already present in list
-        //...
+    public void addExercise(Exercise exercise){ 
+        exercises.add(exercise);
+        caloriesBurned += exercise.getCaloriesBurned();
     }
+    
 
-    public void displaySummary(){
-        //...
+    public void displaySummary() {
+        System.out.println("Workout completed on " + date + " at " + time);
+        System.out.println("Total duration: " + totalDuration);
+        System.out.println("Total calories burned: " + caloriesBurned);
+        System.out.println("---------------------------------------------------");
+        System.out.println("Exercise details: ");
+        System.out.println();
+    	
+    	for (Exercise e : exercises) {
+        	e.displayDetails();
+        	System.out.println();
+        }
+    }
+    
+    // getters and setters
+    public void setDate(String date) {
+    	this.date = date;
+    }
+    public void setTime(String time) {
+    	this.time = time;
+    }
+    public void setTotalDuration(int totalDuration) {
+    	this.totalDuration = totalDuration;
+    }
+    
+    public String getDate() {
+    	return date;
+    }
+    public String getTime() {
+    	return time;
+    }
+    public int getCaloriesBurned() {
+    	return caloriesBurned;
+    }
+    public int totalDuration() {
+    	return totalDuration;
     }
 }
