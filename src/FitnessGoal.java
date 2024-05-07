@@ -2,6 +2,7 @@ public interface FitnessGoal {
 	void updateProgress(double progress);
     boolean isGoalAchieved();
     void giveAdvice();
+    void printGoal();
 }
 
 class WeightGoal implements FitnessGoal {
@@ -39,6 +40,19 @@ class WeightGoal implements FitnessGoal {
 			System.out.println(" * Eat nutrient-rich food such as nuts and cheese");
 		}
 	}
+	
+	public void printGoal() {
+		System.out.print("Your weight goal: ");
+		if (weightTarget < 0) { System.out.print("lose "); }
+		else { System.out.print("gain "); }
+		System.out.print(Math.abs(weightTarget) + " pounds");
+		System.out.println();
+		
+		System.out.println("Progress completed: " + progressPercentage + "%");
+		if (isGoalAchieved()) {
+			System.out.println("Congrats! You've completed this goal.");
+		}
+	}
 }
 
 class RunningGoal implements FitnessGoal {
@@ -69,6 +83,16 @@ class RunningGoal implements FitnessGoal {
 		System.out.println(" * Try out pilates, yoga, and/or climbing to increase flexibility and strength");
 		System.out.println(" * Pace yourself and keep a comfortable and consistent stride");
 		System.out.println(" * Make sure to hydrate before, during, and after running");
+	}
+	
+	public void printGoal() {
+		System.out.print("Your running goal: run " + milesTarget + " miles");
+		System.out.println();
+		
+		System.out.println("Progress completed: " + progressPercentage + "%");
+		if (isGoalAchieved()) {
+			System.out.println("Congrats! You've completed this goal.");
+		}
 	}
 }
 
@@ -102,5 +126,15 @@ class WeightLiftingGoal implements FitnessGoal {
 		System.out.println(" * Don't hold your breath, breathe out as you lift and in as you lower");
 		System.out.println(" * Add strength training to your fitness routine");
 		System.out.println(" * Don't ignore pain and/or push yourself too hard");
+	}
+	
+	public void printGoal() {
+		System.out.print("Your weightlifting goal: lift " + liftingTarget + " pounds");
+		System.out.println();
+		
+		System.out.println("Progress completed: " + progressPercentage + "%");
+		if (isGoalAchieved()) {
+			System.out.println("Congrats! You've completed this goal.");
+		}
 	}
 }
