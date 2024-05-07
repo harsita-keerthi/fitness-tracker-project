@@ -11,6 +11,7 @@ public class Workout {
         this.time = time; 
         this.totalDuration = totalDuration;
         caloriesBurned = 0; 
+        exercises = new ArrayList<Exercise>();
     }
 
     public void addExercise(Exercise exercise){ 
