@@ -1,7 +1,7 @@
 public class Cardio extends Exercise{
     private int duration;
 
-    public Cardio(String activityType, String name, int caloriesBurned, String description){
+    public Cardio(String activityType, String name, int caloriesBurned, String description, int duration){
         super(activityType, name, caloriesBurned, description);
         this.duration = duration;
     }
