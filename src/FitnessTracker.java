@@ -28,7 +28,7 @@ public class FitnessTracker {
 					System.out.print("Time completed: ");
 					String time = scnr.nextLine();
 					
-					System.out.print("Total duration: ");
+					System.out.print("Total duration (in minutes): ");
 					int duration = scnr.nextInt();
 					System.out.println();
 					
@@ -52,6 +52,9 @@ public class FitnessTracker {
 						
 						System.out.print("Exercise name: ");
 						String name = scnr.nextLine();
+						System.out.print("Duration (in minutes): ");
+						int length = scnr.nextInt();
+						scnr.nextLine();
 						System.out.print("Exercise description: ");
 						String description = scnr.nextLine();
 						System.out.print("Calories burned: ");
@@ -61,16 +64,16 @@ public class FitnessTracker {
 						Exercise e = null;
 						switch(type) {
 							case 1: 
-								e = new Weightlifting("weightlifting", name, cals, description);
+								e = new Weightlifting("weightlifting", name, cals, description, length);
 								break;
 							case 2:
-								e = new Stretching("stretching", name, cals, description);
+								e = new Stretching("stretching", name, cals, description, length);
 								break;
 							case 3:
-								e = new Cardio("cardio", name, cals, description);
+								e = new Cardio("cardio", name, cals, description, length);
 								break;
 							case 4:
-								e = new MindBody("mind and body", name, cals, description);
+								e = new MindBody("mind and body", name, cals, description, length);
 								break;
 						}
 						
@@ -85,33 +88,37 @@ public class FitnessTracker {
 					System.out.println("Displaying workouts...");
 					System.out.println();
 					
-					for (Workout w : user.getWorkouts()) {
-						w.displaySummary();
+					List<Workout> userWorkouts = user.getWorkouts();
+					for (int i = 0; i < userWorkouts.size(); ++i) {
+						System.out.println("WORKOUT " + (i+1));
+						userWorkouts.get(i).displaySummary();
 					}
 					
 					break;
 				case 3:
-					System.out.println("Displaying workouts..."); // FIXME: left off here
+					System.out.println("Displaying workouts..."); // FIXME: create
 					System.out.println();
 					break;
 				case 4:
-					System.out.println("Creating fitness goal...");
+					System.out.println("Creating fitness goal..."); // FIXME: create
 					System.out.println();
 					break;
 				case 5:
-					System.out.println("Displaying fitness goals...");
+					System.out.println("Displaying fitness goals..."); // FIXME: create
 					System.out.println();
 					break;
 				case 6:
-					System.out.println("Getting goal advice...");
+					System.out.println("Getting goal advice..."); // FIXME: create
 					System.out.println();
 					break;
 				case 7:
 					System.out.println("Displaying account info...");
 					System.out.println();
+					user.printUser();
+					System.out.println();
 					break;
 				case 8:
-					System.out.println("Displaying account info...");
+					System.out.println("Displaying account info..."); // FIXME: create
 					System.out.println();
 					break;
 			}
@@ -173,6 +180,8 @@ public class FitnessTracker {
         }
 		System.out.println();
 		User user = new User(name, age, height, weight);
+		System.out.println("Account created!");
+		System.out.println();
 		return user;
 	}
 	
