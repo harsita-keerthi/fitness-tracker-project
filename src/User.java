@@ -11,6 +11,7 @@ public class User {
         this.age = age;
         this.weightLbs = weight;
         this.heightIn = height;
+        workouts = new ArrayList<Workout>();
     }
 
     // getters and setters
