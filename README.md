@@ -3,7 +3,7 @@
 ### Authors: Harsita Keerthikanth and Amara Del Prato ###
 To run the fitness tracker application, follow these instructions:
 1. **Clone the Repository:**
-   Clone the Github repository containing the fitness tracker application to your local maching using the following command:
+   Clone the Github repository containing the fitness tracker application to your local machine using the following command:
    `git clone https://github.com/harsita-keerthi/fitness-tracker-project.git`
 2. **Navigate to the Directory:**
    Navigate to the directory where you cloned the repositiry
