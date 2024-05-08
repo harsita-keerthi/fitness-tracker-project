@@ -430,7 +430,7 @@ public class FitnessTracker {
 		System.out.println("7 - Update goal progress");
 		System.out.println("8 - Display account info");
 		System.out.println("9 - Edit account info");
-		System.out.println("0 - Quit dapplication");
+		System.out.println("0 - Quit application");
 		
 		System.out.println();
 		Scanner scnr = new Scanner(System.in);
