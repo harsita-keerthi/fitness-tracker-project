@@ -177,7 +177,7 @@ public class FitnessTracker {
 					}
 				break;
 			case 7:
-				System.out.println("Updating goal progress...");
+				System.out.println("Update goal progress...");
 				System.out.println();
 				break;
 			case 8:
@@ -203,6 +203,46 @@ public class FitnessTracker {
 			case 9:
 				System.out.println("Edit account info...");
 				System.out.println();
+
+				System.out.println("Choose the information you want to edit: ");
+				System.out.println("1 - Name");
+				System.out.println("2 - Age");
+				System.out.println("3 - Height");
+				System.out.println("4 - Weight");
+				System.out.println("0 - Return to main menu");
+				System.out.println("Enter your choice: ");
+				Scanner s = new Scanner (System.in);
+				int editChoice = s.nextInt();
+				s.nextLine();
+
+				switch(editChoice){
+					case 1:
+						System.out.print("Enter new name: ");
+						String newName = s.nextLine();
+						user.setName(newName);
+						break;
+					case 2:
+						System.out.print("Enter new age: ");
+						int newAge = s.nextInt();
+						user.setAge(newAge);
+						break;
+					case 3:
+						System.out.print("Enter new height in inches: ");
+						int newHeight = s.nextInt();
+						user.setHeight(newHeight);
+						break;
+					case 4:
+						System.out.print("Enter new weight in pounds: ");
+						int newWeight = s.nextInt();
+						user.setWeight(newWeight);
+						break;
+					case 0:
+						System.out.println("Returning to main menu...");
+						break;
+					default:
+						System.out.println("Invalid choice");
+						break;
+				}
 				break;
 		}
 			choice = displayMenu();
