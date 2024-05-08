@@ -135,6 +135,15 @@ public class FitnessTracker {
 				case 5:
 					System.out.println("Displaying fitness goals...");
 					System.out.println();
+					if(fitnessGoalsList.isEmpty()){
+						System.out.println("No fitness goals set.");
+					} else {
+						System.out.println("Fitness Goals: ");
+						for (FitnessGoal goal: fitnessGoalsList){
+							goal.printGoal();
+						}
+					}
+					System.out.println();
 					break;
 				case 6:
 					System.out.println("Getting goal advice...");

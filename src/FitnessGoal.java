@@ -18,13 +18,12 @@ class WeightGoal implements FitnessGoal {
 	
 	public void updateProgress(double weight) {
 		weightChange += weight; 
-		progressPercentage = weightChange / weightTarget; 
+		progressPercentage = (weightChange / weightTarget) * 100.0;
 		if (progressPercentage > 100.0) { progressPercentage = 100.0; }
 	}
 	
 	public boolean isGoalAchieved() {
-		if (Math.abs(progressPercentage - 100.0) > 0.00001) { return true; }
-		return false; 
+		return progressPercentage >= 100.0;
 	}
 	
 	public void giveAdvice() {
@@ -68,13 +67,12 @@ class RunningGoal implements FitnessGoal {
 	
 	public void updateProgress(double miles) {
 		totalMiles += miles; 
-		progressPercentage = totalMiles / milesTarget; 
+		progressPercentage = (totalMiles / milesTarget) * 100.0;
 		if (progressPercentage > 100.0) { progressPercentage = 100.0; }
 	}
 	
 	public boolean isGoalAchieved() {
-		if (Math.abs(progressPercentage - 100.0) > 0.00001) { return true; }
-		return false; 
+		return progressPercentage >= 100.0;
 	}
 	
 	public void giveAdvice() {
@@ -111,13 +109,12 @@ class WeightLiftingGoal implements FitnessGoal {
 		if (weightLifted > weightPR) {
 			weightPR = weightLifted;
 		}
-		progressPercentage = weightPR / liftingTarget; 
+		progressPercentage = (weightPR / liftingTarget) * 100.0;
 		if (progressPercentage > 100.0) { progressPercentage = 100.0; }
 	}
 	
 	public boolean isGoalAchieved() {
-		if (Math.abs(progressPercentage - 100.0) > 0.00001) { return true; }
-		return false; 
+		return progressPercentage >= 100.0;
 	}
 	
 	public void giveAdvice() {
