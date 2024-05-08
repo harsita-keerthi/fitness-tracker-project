@@ -62,16 +62,16 @@ public class FitnessTracker {
 						Exercise e = null;
 						switch(type) {
 							case 1: 
-								e = new Weightlifting("weightlifting", name, cals, description);
+								e = new Weightlifting("weightlifting", name, cals, description, duration);
 								break;
 							case 2:
-								e = new Stretching("stretching", name, cals, description);
+								e = new Stretching("stretching", name, cals, description, duration);
 								break;
 							case 3:
-								e = new Cardio("cardio", name, cals, description);
+								e = new Cardio("cardio", name, cals, description, duration);
 								break;
 							case 4:
-								e = new MindBody("mind and body", name, cals, description);
+								e = new MindBody("mind and body", name, cals, description, duration);
 								break;
 						}
 						
