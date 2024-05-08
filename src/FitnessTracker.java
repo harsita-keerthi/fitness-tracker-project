@@ -149,11 +149,13 @@ public class FitnessTracker {
 					Scanner sc = new Scanner(System.in);
 					System.out.println("Getting goal advice...");
 					System.out.println();
+
 					System.out.println("Choose the fitness goal you want advice for: ");
 					System.out.println("1 - Weight Goal");
 					System.out.println("2 - Running Goal");
 					System.out.println("3 - Weightlifting Goal");
 					System.out.print("Enter your choice: ");
+
 					int goalChoice = sc.nextInt();
 					sc.nextLine();
 					switch (goalChoice) {
@@ -173,10 +175,26 @@ public class FitnessTracker {
 							System.out.println("Invalid choice");
 							break;
 					}
-			break;
+				break;
 			case 7:
 				System.out.println("Displaying account info...");
 				System.out.println();
+
+				System.out.println("Personal Information:");
+				System.out.println("Name: " + user.getName());
+				System.out.println("Age: " + user.getAge());
+				System.out.println("Height: " + user.getHeight() + " inches");
+				System.out.println("Weight: " + user.getWeight() + " pounds");
+				System.out.println();
+
+				if (fitnessGoalsList.isEmpty()){
+					System.out.println("No fitness goals set.");
+				} else {
+					System.out.println("Fitness Goals: ");
+					for (int i = 0; i < fitnessGoalsList.size(); i++){
+						fitnessGoalsList.get(i).printGoal();
+					}
+				}
 				break;
 			case 8:
 				System.out.println("Edit account info...");
@@ -259,7 +277,7 @@ public class FitnessTracker {
 		System.out.println("6 - Get goal advice");
 		System.out.println("7 - Display account info");
 		System.out.println("8 - Edit account info");
-		System.out.println("0 - Quit application");
+		System.out.println("0 - Quit dapplication");
 		
 		System.out.println();
 		Scanner scnr = new Scanner(System.in);
