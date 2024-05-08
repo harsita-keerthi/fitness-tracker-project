@@ -10,6 +10,10 @@ class WeightGoal implements FitnessGoal {
 	private double progressPercentage;
 	private double weightChange; // can be negative or positive depending on weight loss/gain goal
 	
+	WeightGoal(){
+
+	}
+
 	WeightGoal(double weightTarget) {
 		this.weightTarget = weightTarget;
 		progressPercentage = 0.0;
@@ -59,6 +63,10 @@ class RunningGoal implements FitnessGoal {
 	private double progressPercentage;
 	private double totalMiles; 
 	
+	RunningGoal(){
+
+	}
+
 	RunningGoal(double milesTarget) {
 		this.milesTarget = milesTarget;
 		progressPercentage = 0.0;
@@ -98,7 +106,11 @@ class WeightLiftingGoal implements FitnessGoal {
 	private double liftingTarget;
 	private double progressPercentage;
 	private double weightPR;
-	
+
+	WeightLiftingGoal(){
+
+	}
+
 	WeightLiftingGoal(double liftingTarget) {
 		this.liftingTarget = liftingTarget;
 		progressPercentage = 0.0;

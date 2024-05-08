@@ -17,26 +17,26 @@ public class FitnessTracker {
 		/* MENU DISPLAY */
 		int choice = displayMenu();
 		while (choice != 0) {
-			switch(choice) {
+			switch (choice) {
 				case 1:
 					System.out.println("Creating new workout...");
 					System.out.println();
-					
+
 					Scanner scnr = new Scanner(System.in);
 					System.out.print("Date completed: ");
 					String date = scnr.nextLine();
-					
+
 					System.out.print("Time completed: ");
 					String time = scnr.nextLine();
-					
+
 					System.out.print("Total duration: ");
 					int duration = scnr.nextInt();
 					System.out.println();
-					
+
 					Workout workout = new Workout(date, time, duration);
 					user.addWorkout(workout);
 					scnr.nextLine();
-					
+
 					System.out.print("Would you like to add an exercise? (y/n): ");
 					String addAnother = scnr.nextLine();
 					int type = 0;
@@ -50,7 +50,7 @@ public class FitnessTracker {
 						type = scnr.nextInt();
 						scnr.nextLine();
 						System.out.println();
-						
+
 						System.out.print("Exercise name: ");
 						String name = scnr.nextLine();
 						System.out.print("Exercise description: ");
@@ -58,10 +58,10 @@ public class FitnessTracker {
 						System.out.print("Calories burned: ");
 						int cals = scnr.nextInt();
 						scnr.nextLine();
-						
+
 						Exercise e = null;
-						switch(type) {
-							case 1: 
+						switch (type) {
+							case 1:
 								e = new Weightlifting("weightlifting", name, cals, description, duration);
 								break;
 							case 2:
@@ -74,7 +74,7 @@ public class FitnessTracker {
 								e = new MindBody("mind and body", name, cals, description, duration);
 								break;
 						}
-						
+
 						workout.addExercise(e);
 						System.out.println();
 						System.out.print("Would you like to add an exercise? (y/n): ");
@@ -85,11 +85,11 @@ public class FitnessTracker {
 				case 2:
 					System.out.println("Displaying workouts...");
 					System.out.println();
-					
+
 					for (Workout w : user.getWorkouts()) {
 						w.displaySummary();
 					}
-					
+
 					break;
 				case 3:
 					System.out.println("Displaying workouts..."); // FIXME: left off here
@@ -108,7 +108,7 @@ public class FitnessTracker {
 					int goalType = scan.nextInt();
 					scan.nextLine();
 
-					switch(goalType){
+					switch (goalType) {
 						case 1:
 							System.out.print("Enter weight target: ");
 							double weightTarget = scan.nextDouble();
@@ -135,29 +135,54 @@ public class FitnessTracker {
 				case 5:
 					System.out.println("Displaying fitness goals...");
 					System.out.println();
-					if(fitnessGoalsList.isEmpty()){
+					if (fitnessGoalsList.isEmpty()) {
 						System.out.println("No fitness goals set.");
 					} else {
 						System.out.println("Fitness Goals: ");
-						for (FitnessGoal goal: fitnessGoalsList){
+						for (FitnessGoal goal : fitnessGoalsList) {
 							goal.printGoal();
 						}
 					}
 					System.out.println();
 					break;
 				case 6:
+					Scanner sc = new Scanner(System.in);
 					System.out.println("Getting goal advice...");
 					System.out.println();
-					break;
-				case 7:
-					System.out.println("Displaying account info...");
-					System.out.println();
-					break;
-				case 8:
-					System.out.println("Displaying account info...");
-					System.out.println();
-					break;
-			}
+					System.out.println("Choose the fitness goal you want advice for: ");
+					System.out.println("1 - Weight Goal");
+					System.out.println("2 - Running Goal");
+					System.out.println("3 - Weightlifting Goal");
+					System.out.print("Enter your choice: ");
+					int goalChoice = sc.nextInt();
+					sc.nextLine();
+					switch (goalChoice) {
+						case 1:
+							FitnessGoal selectedGoal1 = new WeightGoal();
+							selectedGoal1.giveAdvice();
+							break;
+						case 2:
+							FitnessGoal selectedGoal2 = new RunningGoal();
+							selectedGoal2.giveAdvice();
+							break;
+						case 3:
+							FitnessGoal selectedGoal3 = new WeightLiftingGoal();
+							selectedGoal3.giveAdvice();
+							break;
+						default:
+							System.out.println("Invalid choice");
+							break;
+					}
+			break;
+			case 7:
+				System.out.println("Displaying account info...");
+				System.out.println();
+				break;
+			case 8:
+				System.out.println("Edit account info...");
+				System.out.println();
+				break;
+		}
 			choice = displayMenu();
 		}
 		
