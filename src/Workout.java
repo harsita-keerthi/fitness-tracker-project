@@ -22,15 +22,13 @@ public class Workout {
 
     public void displaySummary() {
         System.out.println("Workout completed on " + date + " at " + time);
-        System.out.println("Total duration: " + totalDuration);
+        System.out.println("Total duration: " + totalDuration + " minutes");
         System.out.println("Total calories burned: " + caloriesBurned);
-        System.out.println("---------------------------------------------------");
-        System.out.println("Exercise details: ");
         System.out.println();
+        System.out.println("Exercises in this workout: ");
     	
     	for (Exercise e : exercises) {
         	e.displayDetails();
-        	System.out.println();
         }
     }
     

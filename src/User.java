@@ -5,6 +5,7 @@ public class User {
     private double heightIn;
     private double weightLbs;
     private List workouts;
+    private List goals;
 
     public User (String name, double age, double height, double weight){
         this.name = name;
@@ -12,6 +13,7 @@ public class User {
         this.weightLbs = weight;
         this.heightIn = height;
         workouts = new ArrayList<Workout>();
+        goals = new ArrayList<FitnessGoal>();
     }
 
     // getters and setters
@@ -60,6 +62,19 @@ public class User {
     public List<Workout> getWorkouts(){
         return workouts;
     }
+    
+    public void addGoal(FitnessGoal goal){
+        goals.add(goal);
+    }
+    
+    public List<Workout> getGoals(){
+        return goals;
+    }
 
-
+    public void printUser() {
+    	System.out.println("Name: " + name);
+    	System.out.println("Age: " + age + " years");
+    	System.out.println("Weight: " + weightLbs + " lbs");
+    	System.out.println("Height: " + heightIn + " inches");
+    }
 }
