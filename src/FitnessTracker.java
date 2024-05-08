@@ -179,6 +179,52 @@ public class FitnessTracker {
 			case 7:
 				System.out.println("Update goal progress...");
 				System.out.println();
+				Scanner sr = new Scanner(System.in);
+				if(fitnessGoalsList.isEmpty()){
+					System.out.println("No fitness goals set.");
+				} else {
+					System.out.println("Choose the fitness goal you want to update progress for: ");
+					for (int i = 0; i < fitnessGoalsList.size(); i++){
+						System.out.println((i+1) + " - " + fitnessGoalsList.get(i).getClass().getSimpleName());
+					}
+					System.out.print("Enter your choice: ");
+					int goalUpdate = sr.nextInt();
+					sr.nextLine();
+
+					if (goalUpdate < 1 || goalUpdate > fitnessGoalsList.size()) {
+						System.out.println("Invalid choice!");
+					} else {
+						FitnessGoal selectedGoal = fitnessGoalsList.get(goalUpdate - 1);
+						System.out.println("Updating progress for " + selectedGoal.getClass().getSimpleName() + " goal...");
+
+						switch(selectedGoal.getClass().getSimpleName()){
+							case "WeightGoal":
+								System.out.print("Enter weight change (in pounds): ");
+								double weightChange = sr.nextDouble();
+								sr.nextLine();
+								selectedGoal.updateProgress(weightChange);
+								if (selectedGoal.getProgressPercentage() >= 100.0){
+									user.setWeight(user.getWeight() + weightChange);
+								}
+								break;
+							case "Running Goal":
+								System.out.print("Enter distance ran (in miles): ");
+								double miles = sr.nextDouble();
+								sr.nextLine();
+								selectedGoal.updateProgress(miles);
+								break;
+							case "WeightLiftingGoal":
+								System.out.print("Enter weight lifted (in pounds): ");
+								double weightLifted = sr.nextDouble();
+								sr.nextLine();
+								selectedGoal.updateProgress(weightLifted);
+								break;
+							default:
+								System.out.println("Unsupported goal type.");
+								break;
+						}
+					}
+				}
 				break;
 			case 8:
 				System.out.println("Displaying account info...");

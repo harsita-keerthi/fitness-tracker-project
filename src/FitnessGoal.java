@@ -3,6 +3,8 @@ public interface FitnessGoal {
     boolean isGoalAchieved();
     void giveAdvice();
     void printGoal();
+
+	double getProgressPercentage();
 }
 
 class WeightGoal implements FitnessGoal {
@@ -20,8 +22,8 @@ class WeightGoal implements FitnessGoal {
 		weightChange = 0.0;
 	}
 	
-	public void updateProgress(double weight) {
-		weightChange += weight; 
+	public void updateProgress(double weightChange) {
+		this.weightChange += weightChange;
 		progressPercentage = (weightChange / weightTarget) * 100.0;
 		if (progressPercentage > 100.0) { progressPercentage = 100.0; }
 	}
@@ -55,6 +57,10 @@ class WeightGoal implements FitnessGoal {
 		if (isGoalAchieved()) {
 			System.out.println("Congrats! You've completed this goal.");
 		}
+	}
+
+	public double getProgressPercentage(){
+		return progressPercentage;
 	}
 }
 
@@ -99,6 +105,10 @@ class RunningGoal implements FitnessGoal {
 		if (isGoalAchieved()) {
 			System.out.println("Congrats! You've completed this goal.");
 		}
+	}
+
+	public double getProgressPercentage(){
+		return progressPercentage;
 	}
 }
 
@@ -145,5 +155,9 @@ class WeightLiftingGoal implements FitnessGoal {
 		if (isGoalAchieved()) {
 			System.out.println("Congrats! You've completed this goal.");
 		}
+	}
+
+	public double getProgressPercentage(){
+		return progressPercentage;
 	}
 }
