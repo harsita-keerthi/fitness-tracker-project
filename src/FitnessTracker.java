@@ -12,6 +12,7 @@ public class FitnessTracker {
 		System.out.println();
 		
 		User user = createUser();
+		List<FitnessGoal> fitnessGoalsList = new ArrayList<>();
 		
 		/* MENU DISPLAY */
 		int choice = displayMenu();
@@ -95,8 +96,41 @@ public class FitnessTracker {
 					System.out.println();
 					break;
 				case 4:
+					Scanner scan = new Scanner(System.in);
+
 					System.out.println("Creating fitness goal...");
 					System.out.println();
+					System.out.println("Choose the type of fitness goal:");
+					System.out.println("1 - Weight Goal");
+					System.out.println("2 - Running Goal");
+					System.out.println("3 - Weightlifting Goal");
+					System.out.print("Enter your choice: ");
+					int goalType = scan.nextInt();
+					scan.nextLine();
+
+					switch(goalType){
+						case 1:
+							System.out.print("Enter weight target: ");
+							double weightTarget = scan.nextDouble();
+							scan.nextLine();
+							fitnessGoalsList.add(new WeightGoal(weightTarget));
+							break;
+						case 2:
+							System.out.print("Enter miles target: ");
+							double milesTarget = scan.nextDouble();
+							scan.nextLine();
+							fitnessGoalsList.add(new RunningGoal(milesTarget));
+							break;
+						case 3:
+							System.out.print("Enter lifting goal: ");
+							double liftingTarget = scan.nextDouble();
+							scan.nextLine();
+							fitnessGoalsList.add(new WeightLiftingGoal(liftingTarget));
+							break;
+						default:
+							System.out.println("Invalid choice");
+							break;
+					}
 					break;
 				case 5:
 					System.out.println("Displaying fitness goals...");
