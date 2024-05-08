@@ -177,6 +177,10 @@ public class FitnessTracker {
 					}
 				break;
 			case 7:
+				System.out.println("Updating goal progress...");
+				System.out.println();
+				break;
+			case 8:
 				System.out.println("Displaying account info...");
 				System.out.println();
 
@@ -196,7 +200,7 @@ public class FitnessTracker {
 					}
 				}
 				break;
-			case 8:
+			case 9:
 				System.out.println("Edit account info...");
 				System.out.println();
 				break;
@@ -275,8 +279,9 @@ public class FitnessTracker {
 		System.out.println("4 - Set fitness goal");
 		System.out.println("5 - Display fitness goals");
 		System.out.println("6 - Get goal advice");
-		System.out.println("7 - Display account info");
-		System.out.println("8 - Edit account info");
+		System.out.println("7 - Update goal progress");
+		System.out.println("8 - Display account info");
+		System.out.println("9 - Edit account info");
 		System.out.println("0 - Quit dapplication");
 		
 		System.out.println();
