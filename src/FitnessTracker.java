@@ -18,6 +18,8 @@ public class FitnessTracker {
 		int choice = displayMenu();
 		while (choice != 0) {
 			switch (choice) {
+				case 0:
+					break;
 				case 1:
 					System.out.println("Creating new workout...");
 					System.out.println();
@@ -123,6 +125,7 @@ public class FitnessTracker {
 							System.out.println("Invalid choice");
 							break;
 					}
+					System.out.println();
 					break;
 				case 5:
 					System.out.println("Displaying fitness goals...");
@@ -150,6 +153,7 @@ public class FitnessTracker {
 
 					int goalChoice = sc.nextInt();
 					sc.nextLine();
+					System.out.println();
 					switch (goalChoice) {
 						case 1:
 							FitnessGoal selectedGoal1 = new WeightGoal();
@@ -167,126 +171,138 @@ public class FitnessTracker {
 							System.out.println("Invalid choice");
 							break;
 					}
-				break;
-			case 7:
-				System.out.println("Update goal progress...");
-				System.out.println();
-				Scanner sr = new Scanner(System.in);
-				if(fitnessGoalsList.isEmpty()){
-					System.out.println("No fitness goals set.");
-				} else {
-					System.out.println("Choose the fitness goal you want to update progress for: ");
-					for (int i = 0; i < fitnessGoalsList.size(); i++){
-						System.out.println((i+1) + " - " + fitnessGoalsList.get(i).getClass().getSimpleName());
-					}
-					System.out.print("Enter your choice: ");
-					int goalUpdate = sr.nextInt();
-					sr.nextLine();
-
-					if (goalUpdate < 1 || goalUpdate > fitnessGoalsList.size()) {
-						System.out.println("Invalid choice!");
+					System.out.println();
+					break;
+				case 7:
+					System.out.println("Update goal progress...");
+					System.out.println();
+					Scanner sr = new Scanner(System.in);
+					if(fitnessGoalsList.isEmpty()){
+						System.out.println("No fitness goals set.");
 					} else {
-						FitnessGoal selectedGoal = fitnessGoalsList.get(goalUpdate - 1);
-						System.out.println("Updating progress for " + selectedGoal.getClass().getSimpleName() + " goal...");
-
-						switch(selectedGoal.getClass().getSimpleName()){
-							case "WeightGoal":
-								System.out.print("Enter weight change (in pounds): ");
-								double weightChange = sr.nextDouble();
-								sr.nextLine();
-								selectedGoal.updateProgress(weightChange);
-								if (selectedGoal.getProgressPercentage() >= 100.0){
-									user.setWeight(user.getWeight() + weightChange);
-								}
-								break;
-							case "Running Goal":
-								System.out.print("Enter distance ran (in miles): ");
-								double miles = sr.nextDouble();
-								sr.nextLine();
-								selectedGoal.updateProgress(miles);
-								break;
-							case "WeightLiftingGoal":
-								System.out.print("Enter weight lifted (in pounds): ");
-								double weightLifted = sr.nextDouble();
-								sr.nextLine();
-								selectedGoal.updateProgress(weightLifted);
-								break;
-							default:
-								System.out.println("Unsupported goal type.");
-								break;
+						System.out.println("Choose the fitness goal you want to update progress for: ");
+						for (int i = 0; i < fitnessGoalsList.size(); i++){
+							System.out.println((i+1) + " - " + fitnessGoalsList.get(i).getClass().getSimpleName());
+						}
+						System.out.print("Enter your choice: ");
+						int goalUpdate = sr.nextInt();
+						sr.nextLine();
+	
+						if (goalUpdate < 1 || goalUpdate > fitnessGoalsList.size()) {
+							System.out.println("Invalid choice!");
+						} else {
+							FitnessGoal selectedGoal = fitnessGoalsList.get(goalUpdate - 1);
+							System.out.println("Updating progress for " + selectedGoal.getClass().getSimpleName() + " goal...");
+	
+							switch(selectedGoal.getClass().getSimpleName()){
+								case "WeightGoal":
+									System.out.print("Enter weight change (in pounds): ");
+									double weightChange = sr.nextDouble();
+									sr.nextLine();
+									selectedGoal.updateProgress(weightChange);
+									if (selectedGoal.getProgressPercentage() >= 100.0){
+										user.setWeight(user.getWeight() + weightChange);
+									}
+									System.out.println();
+									break;
+								case "RunningGoal":
+									System.out.print("Enter distance ran (in miles): ");
+									double miles = sr.nextDouble();
+									sr.nextLine();
+									selectedGoal.updateProgress(miles);
+									System.out.println();
+									break;
+								case "WeightLiftingGoal":
+									System.out.print("Enter weight lifted (in pounds): ");
+									double weightLifted = sr.nextDouble();
+									sr.nextLine();
+									selectedGoal.updateProgress(weightLifted);
+									System.out.println();
+									break;
+								default:
+									System.out.println("Unsupported goal type.");
+									System.out.println();
+									break;
+							}
 						}
 					}
-				}
-				break;
-			case 8:
-				System.out.println("Displaying account info...");
-				System.out.println();
-
-				System.out.println("Personal Information:");
-				System.out.println("Name: " + user.getName());
-				System.out.println("Age: " + user.getAge());
-				System.out.println("Height: " + user.getHeight() + " inches");
-				System.out.println("Weight: " + user.getWeight() + " pounds");
-				System.out.println();
-
-				if (fitnessGoalsList.isEmpty()){
-					System.out.println("No fitness goals set.");
-				} else {
-					System.out.println("Fitness Goals: ");
-					for (int i = 0; i < fitnessGoalsList.size(); i++){
-						fitnessGoalsList.get(i).printGoal();
+					break;
+				case 8:
+					System.out.println("Displaying account info...");
+					System.out.println();
+	
+					System.out.println("Personal Information:");
+					System.out.println("Name: " + user.getName());
+					System.out.println("Age: " + user.getAge());
+					System.out.println("Height: " + user.getHeight() + " inches");
+					System.out.println("Weight: " + user.getWeight() + " pounds");
+					System.out.println();
+	
+					if (fitnessGoalsList.isEmpty()){
+						System.out.println("No fitness goals set.");
+					} else {
+						System.out.println("Fitness Goals: ");
+						for (int i = 0; i < fitnessGoalsList.size(); i++){
+							fitnessGoalsList.get(i).printGoal();
+						}
 					}
-				}
-				break;
-			case 9:
-				System.out.println("Edit account info...");
-				System.out.println();
-
-				System.out.println("Choose the information you want to edit: ");
-				System.out.println("1 - Name");
-				System.out.println("2 - Age");
-				System.out.println("3 - Height");
-				System.out.println("4 - Weight");
-				System.out.println("0 - Return to main menu");
-				System.out.println("Enter your choice: ");
-				Scanner in = new Scanner (System.in);
-				int accEditChoice = in.nextInt();
-				in.nextLine();
-
-				switch(accEditChoice){
-					case 1:
-						System.out.print("Enter new name: ");
-						String newName = in.nextLine();
-						user.setName(newName);
-						break;
-					case 2:
-						System.out.print("Enter new age: ");
-						int newAge = in.nextInt();
-						user.setAge(newAge);
-						break;
-					case 3:
-						System.out.print("Enter new height in inches: ");
-						int newHeight = in.nextInt();
-						user.setHeight(newHeight);
-						break;
-					case 4:
-						System.out.print("Enter new weight in pounds: ");
-						int newWeight = in.nextInt();
-						user.setWeight(newWeight);
-						break;
-					case 0:
-						System.out.println("Returning to main menu...");
-						break;
-					default:
-						System.out.println("Invalid choice");
-						break;
-				}
-				break;
-		}
+					System.out.println();
+					break;
+				case 9:
+					System.out.println("Edit account info...");
+					System.out.println();
+	
+					System.out.println("Choose the information you want to edit: ");
+					System.out.println("1 - Name");
+					System.out.println("2 - Age");
+					System.out.println("3 - Height");
+					System.out.println("4 - Weight");
+					System.out.println("0 - Return to main menu");
+					System.out.print("Enter your choice: ");
+					Scanner in = new Scanner (System.in);
+					int accEditChoice = in.nextInt();
+					in.nextLine();
+	
+					switch(accEditChoice){
+						case 1:
+							System.out.print("Enter new name: ");
+							String newName = in.nextLine();
+							user.setName(newName);
+							break;
+						case 2:
+							System.out.print("Enter new age: ");
+							int newAge = in.nextInt();
+							user.setAge(newAge);
+							break;
+						case 3:
+							System.out.print("Enter new height in inches: ");
+							int newHeight = in.nextInt();
+							user.setHeight(newHeight);
+							break;
+						case 4:
+							System.out.print("Enter new weight in pounds: ");
+							int newWeight = in.nextInt();
+							user.setWeight(newWeight);
+							break;
+						case 0:
+							System.out.println("Returning to main menu...");
+							break;
+						default:
+							System.out.println("Invalid choice");
+							break;
+					}
+					System.out.println();
+					break;
+				default:
+					System.out.println("ERROR: Please choose a valid number 0-9.");
+					System.out.println();
+					break;
+			}
 			choice = displayMenu();
 		}
 		
 		System.out.println("Application closing...");
+		
 	}
 	
 	public static User createUser() {
