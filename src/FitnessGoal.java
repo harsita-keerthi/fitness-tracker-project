@@ -48,7 +48,7 @@ class WeightGoal implements FitnessGoal {
 	
 	public void printGoal() {
 		System.out.print("Your weight goal: ");
-		if (weightTarget < 0) { System.out.print("lose "); }
+		if (weightTarget <= 0) { System.out.print("lose "); }
 		else { System.out.print("gain "); }
 		System.out.print(Math.abs(weightTarget) + " pounds");
 		System.out.println();
