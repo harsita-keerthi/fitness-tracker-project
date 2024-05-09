@@ -24,7 +24,7 @@ class WeightGoal implements FitnessGoal {
 	
 	public void updateProgress(double weightChange) {
 		this.weightChange += weightChange;
-		progressPercentage = (weightChange / weightTarget) * 100.0;
+		progressPercentage = (this.weightChange / weightTarget) * 100.0;
 		if (progressPercentage > 100.0) { progressPercentage = 100.0; }
 	}
 	
