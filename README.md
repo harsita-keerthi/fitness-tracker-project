@@ -1,6 +1,5 @@
 # Fitness Tracker App #
 
-### Authors: Harsita Keerthikanth and Amara Del Prato ###
 To run the fitness tracker application, follow these instructions:
 1. **Clone the Repository:**
    Clone the Github repository containing the fitness tracker application to your local machine using the following command
